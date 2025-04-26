@@ -28,7 +28,7 @@ void add_character(string *target, char input) {
     target->body[target->length] = '\0';
 }
 
-void add_characters(string target, char* input) {
+void add_characters(string *target, char* input) {
     int length = 0; //the length does NOT include the null character
     while (input[length] != '\0') {
         length++;
