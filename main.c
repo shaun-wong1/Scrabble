@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "stringstruct.h"
 #include "linkedlist.h"
+#include "letterbag.h"
+//#include "raylib.h"
 
 
 
@@ -11,8 +13,9 @@ int main() {
     FILE *dictionary_FILE;
     dictionary_FILE = fopen("dictionary.txt", "r");
 
-    Node* head_node = malloc(sizeof(Node));
+    Node* head_node = malloc(sizeof(Node)); //DOESNT CONTAIN ANY WORD
     Node* end_node = NULL;
+
     char line_buff[16]; //stores the first 16 chars of the line
 
     fgets(line_buff, 16, dictionary_FILE);
@@ -37,18 +40,33 @@ int main() {
     //load th first line into the string struc and make sure it has valid capacity and length
 
     fclose(dictionary_FILE);
+    /*
+    //printloop
+    end_node = head_node->next;
+    Node* print_temp_node = NULL;
+    while (end_node->next != NULL) {
+        print_temp_node = end_node->next;
+        printf("%s \n", end_node->word.body);
+        end_node = print_temp_node;
+    }
+    printf("%s \n", end_node->word.body);
+    */
 
+    init();
 
-    end_node = head_node;
+    end_node = head_node->next;
+    Node* temp_node = NULL;
     while (end_node->next != NULL) { //loops through, first creating a new (temp) node to contain the next node
-        Node* temp_node = end_node->next;
-        destructor(&end_node->word); //next frees the word/contents of the node
+        temp_node = end_node->next;
+        destructor(&(end_node->word)); //next frees the word/contents of the node
         free(end_node); //frees the node itself
         end_node = temp_node;//loops back
+
     }
 
-    destructor(&end_node->word);// catches the case where the final node exsits but not being processed
-    free(end_node);// above since while loop checks for the next node
+    destructor(&(end_node->word));// catches the case where the final node exsits but not being processed
+    free(end_node);
+    free(head_node);// above since while loop checks for the next node
     //so this is a catch for the very last node
 
     

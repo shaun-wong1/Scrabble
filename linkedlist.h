@@ -15,3 +15,4 @@ typedef struct Nodestruct Node;
 Node* newNode(string value);
 void append(Node *start_node, string word);
 Node* find_end(Node *node);
+Node* find_node(Node *start_node, string word);

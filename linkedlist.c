@@ -21,3 +21,15 @@ Node* find_end(Node *node) {
     }
     return node;
 }
+
+Node* find_node(Node *start_node, string word) {
+    while (start_node->next != NULL) {
+        int same = compare_words(&(start_node->word), &word); //either 0 or 1
+        if (same == 1) {
+            return start_node;
+        }
+        else {
+            start_node = start_node->next;
+        }
+    }
+}

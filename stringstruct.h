@@ -16,5 +16,6 @@ void destructor(string *target);
 void add_character(string *target, char input);
 void add_characters(string *target, char* input);
 void expand_memory(string *target, int capacity_multiplier);
+int compare_words(string *word1, string *word2);
 
 #endif

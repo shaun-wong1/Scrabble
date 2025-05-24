@@ -49,3 +49,17 @@ void expand_memory(string *target, int capacity_multiplier) {
     target->body = temp;
 }
 
+int compare_words(string *word1, string *word2) {
+    if (word1->length != word2->length) {
+        return 0;
+    }
+    else {
+        for (int i = 0; i < word1->length; i++) {
+            if (word1->body[i] != word2->body[i]) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+}
+
