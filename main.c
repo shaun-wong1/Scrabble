@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "stringstruct.h"
 #include "linkedlist.h"
 #include "letterbag.h"
@@ -9,6 +10,8 @@
 
 
 int main() {
+
+    srand(time(NULL));
     printf("Hello World \n");
     FILE *dictionary_FILE;
     dictionary_FILE = fopen("dictionary.txt", "r");
@@ -52,7 +55,9 @@ int main() {
     printf("%s \n", end_node->word.body);
     */
 
-    init();
+    int *bag = init();
+    int letter = random_pick();
+    printf("%c \n", bag[letter]);
 
     end_node = head_node->next;
     Node* temp_node = NULL;

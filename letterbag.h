@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void init();
-void add_chars(char ascii_number, int quantity, int *bag);
-char random_pick(int *bag);
+
+int* init();
+void add_chars(char ascii_number, int quantity);
+void remove_character(int index);
+int random_pick();
